@@ -7,8 +7,8 @@ phases:
   post_build:
     commands:
       - mvn -e install
-      - mv target/my-web-app.war my-web-app.war
+      - mv target/test-0.0.2-SNAPSHOT.jar devexp.jar
 artifacts:
   files:
-    - my-web-app.war
+    - devexp.jar
     - .ebextensions/**/*

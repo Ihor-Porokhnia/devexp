@@ -6,7 +6,7 @@ phases:
       java: corretto11
   post_build:
     commands:
-      - mvn install
+      - mvn -e install
       - mv target/my-web-app.war my-web-app.war
 artifacts:
   files:

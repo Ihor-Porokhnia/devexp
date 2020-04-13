@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{#message}}
+    <h1>{{message}}</h1>
+{{/message}}
+
+<form action="/" method="post">
+    <fieldset>
+        <label>
+            Enter message:
+            <input required name="message">
+        </label>
+        <button type="submit">Send</button>
+    </fieldset>
+</form>
+</body>
+</html>

@@ -32,10 +32,12 @@ public class TestController {
         return mav;
     }
 
-    @DeleteMapping
+    @PostMapping("/del")
     public ModelAndView deleteEntity(@RequestParam Integer id) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("redirect:/all");
         service.delete(id);
-        return new ModelAndView("index");
+        return mav;
     }
 
     @GetMapping("/all")

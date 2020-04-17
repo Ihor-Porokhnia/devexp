@@ -26,7 +26,7 @@ public class TestController {
 
         TestEntity entity = new TestEntity();
         entity.setFirstName(firstName);
-        entity.setLsatName(lastName);
+        entity.setLastName(lastName);
 
         mav.addObject("entity", service.save(entity));
         return mav;
@@ -42,7 +42,7 @@ public class TestController {
     public ModelAndView showAll() {
         ModelAndView mav = new ModelAndView("index");
         List<TestEntity> list = service.getAll();
-        mav.addObject("all", mav);
+        mav.addObject("all", list);
         return mav;
     }
 

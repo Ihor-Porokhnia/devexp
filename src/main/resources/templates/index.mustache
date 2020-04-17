@@ -7,7 +7,7 @@
 <body>
 
 {{#entity}}
-    <p>Test entity <i>{{entity}}</i> successfully added!</p>
+    <p>Test entity <i>{{firstName}} {{lastName}}</i> successfully added!</p>
 {{/entity}}
 
 <form action="/" method="post">
@@ -29,9 +29,10 @@
 </form>
 
 {{#all}}
-    ===============================
-
-    ===============================
+    =============================
+    <br><br>
+    {{firstName}} {{lastName}}
+    <br><br>
 {{/all}}
 
 </body>

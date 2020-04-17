@@ -19,11 +19,10 @@ public class TestEntity {
     private String firstName;
 
     @Column(name = "last_name")
-    private String lsatName;
+    private String lastName;
 
-    @CreatedDate
     @Column(name = "create_time")
-    private Date createdTime;
+    private Date createdTime = new Date();
 
     public TestEntity() {
     }

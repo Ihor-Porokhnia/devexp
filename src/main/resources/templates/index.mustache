@@ -5,18 +5,37 @@
     <title>Title</title>
 </head>
 <body>
-{{#message}}
-    <h1>Hello, {{message}}</h1>
-{{/message}}
+
+{{#entity}}
+    <p>Test entity <i>{{firstName}} {{lastName}}</i> successfully added!</p>
+{{/entity}}
 
 <form action="/" method="post">
     <fieldset>
         <label>
-            Enter your penis size:
-            <input required name="message" type="number">
+            Enter first name:
+            <input name="firstName" required maxlength="100"/>
+        </label>
+        <label>
+            Enter last name:
+            <input name="lastName" required maxlength="100"/>
         </label>
         <button type="submit">Send</button>
     </fieldset>
 </form>
+
+<form action="/all" method="get">
+    <label><input type="hidden" name="id" required maxlength="100"/></label>
+    <button type="submit">Send</button>
+</form>
+
+{{#all}}
+    ===============================
+    <br>
+    {{firstName}} {{lastName}}
+    <br>
+    ===============================
+{{/all}}
+
 </body>
 </html>

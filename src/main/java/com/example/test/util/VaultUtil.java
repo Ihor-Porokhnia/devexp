@@ -19,7 +19,6 @@ import java.io.IOException;
 
 @PropertySource("classpath:bd.properties")
 @Component
-@Scope("prototype")
 @Data
 @Slf4j
 public class VaultUtil {

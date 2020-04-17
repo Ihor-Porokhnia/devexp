@@ -39,7 +39,7 @@ public class TestController {
     }
 
     @GetMapping("/all")
-    public ModelAndView showAll(@RequestParam Integer id) {
+    public ModelAndView showAll() {
         ModelAndView mav = new ModelAndView("index");
         List<TestEntity> list = service.getAll();
         mav.addObject("all", mav);

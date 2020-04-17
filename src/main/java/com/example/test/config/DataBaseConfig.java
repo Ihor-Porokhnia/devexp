@@ -34,6 +34,7 @@ public class DataBaseConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(dataBaseUrl);
+        System.out.printf("%s\n%s ", util.getPassword(), util.getUsername());
         dataSource.setUsername(util.getUsername());
         dataSource.setPassword(util.getPassword());
         return dataSource;

@@ -1,6 +1,7 @@
 package com.example.test.model;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;

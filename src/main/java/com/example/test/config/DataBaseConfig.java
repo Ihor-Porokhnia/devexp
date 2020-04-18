@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.Ordered;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.stereotype.Component;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +27,7 @@ public class DataBaseConfig {
     private VaultUtil util;
 
     @Autowired
-    public void setUserBase(VaultUtil util) {
+    public void setVaultUtil(VaultUtil util) {
         this.util = util;
         this.util.initParamForDataBase();
     }

@@ -46,22 +46,11 @@ public class DataBaseConfig {
     private void updateDataSource() {
         TimerTask setLogoPassToDataSource = new TimerTask() {
 
-            @Autowired
-            private VaultUtil vaultUtil;
-
             public void run() {
-                String user = dataSource().getUsername();
-                String password = dataSource().getPassword();
-
-
-                vaultUtil = new VaultUtil();
-                vaultUtil.initParamForDataBase();
-
-                dataSource().setUsername(user);
-                dataSource().setPassword(password);
+                util.initParamForDataBase();
+                dataSource().setUsername(util.getUsername());
+                dataSource().setPassword(util.getPassword());
                 log.info("username and pass successfully update");
-
-                vaultUtil = null;
             }
         };
 

@@ -23,11 +23,9 @@ public class TestController {
     public ModelAndView addEntity(@RequestParam String firstName,
                                   @RequestParam String lastName) {
         ModelAndView mav = new ModelAndView("index");
-
         TestEntity entity = new TestEntity();
         entity.setFirstName(firstName);
         entity.setLastName(lastName);
-
         mav.addObject("entity", service.save(entity));
         return mav;
     }
@@ -47,6 +45,4 @@ public class TestController {
         mav.addObject("all", list);
         return mav;
     }
-
-
 }

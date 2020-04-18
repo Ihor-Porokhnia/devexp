@@ -21,6 +21,7 @@ import java.io.IOException;
 @Component
 @Data
 @Slf4j
+@Scope("prototype")
 public class VaultUtil {
 
     @Autowired
@@ -38,14 +39,12 @@ public class VaultUtil {
     @Value("${vault.x}")
     private String headName;
 
-
     private String getJsonFromVault() {
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(vaultUrl);
         get.addHeader(headName, vaultToken);
         try {
             HttpResponse response = httpClient.execute(get);
-            log.info("IN getJsonFromVault() - got HttpResponse: {}", response);
             return EntityUtils.toString(response.getEntity());
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,11 +58,8 @@ public class VaultUtil {
         try {
             this.username = mapper.readTree(jsonProp).get("data").get("username").asText();
             this.password = mapper.readTree(jsonProp).get("data").get("password").asText();
-            log.info("username and password successfully got");
         } catch (JsonProcessingException e) {
-            log.info("username and password didn't got: {} ", e.getMessage());
+            log.warn("username and password didn't got: {} ", e.getMessage());
         }
     }
-
-
 }

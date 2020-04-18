@@ -21,6 +21,7 @@ import java.io.IOException;
 @Component
 @Data
 @Slf4j
+@Scope("prototype")
 public class VaultUtil {
 
     @Autowired

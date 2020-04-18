@@ -1,6 +1,7 @@
 package com.example.test.config;
 
 import com.example.test.util.VaultUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -9,12 +10,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.Ordered;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @Configuration
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @PropertySource("classpath:bd.properties")
+@Slf4j
 public class DataBaseConfig {
 
     @Value("${postgres.driver}")
@@ -30,14 +34,42 @@ public class DataBaseConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
+    public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(dataBaseUrl);
-        System.out.printf("%s\n%s ", util.getPassword(), util.getUsername());
         dataSource.setUsername(util.getUsername());
         dataSource.setPassword(util.getPassword());
+        updateDataSource();
         return dataSource;
+    }
+
+    private void updateDataSource() {
+        TimerTask setLogoPassToDataSource = new TimerTask() {
+
+            @Autowired
+            private VaultUtil vaultUtil;
+
+            public void run() {
+                String user = dataSource().getUsername();
+                String password = dataSource().getPassword();
+
+
+                vaultUtil = new VaultUtil();
+                vaultUtil.initParamForDataBase();
+
+                dataSource().setUsername(user);
+                dataSource().setPassword(password);
+                log.info("username and pass successfully update");
+
+                vaultUtil = null;
+            }
+        };
+
+        Timer timer = new Timer();
+        long delay = 1000L * 60L * 59L;
+        long period = 1000L * 60L * 60L;
+        timer.scheduleAtFixedRate(setLogoPassToDataSource, delay, period);
     }
 
 }

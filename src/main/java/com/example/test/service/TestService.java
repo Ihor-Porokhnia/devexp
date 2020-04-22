@@ -9,28 +9,36 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class TestService {
+public class TestService implements ParentService<TestEntity> {
 
     @Autowired
     private TestRepository repository;
 
+    @Override
     @Transactional
     public TestEntity save(TestEntity entity) {
         return repository.save(entity);
     }
 
-    @Transactional
-    public TestEntity getOne(Integer id) {
-        return repository.getOne(id);
-    }
-
+    @Override
     @Transactional
     public List<TestEntity> getAll() {
         return repository.findAll();
     }
 
+    @Override
+    @Transactional
+    public void delete(TestEntity entity) {
+        repository.delete(entity);
+    }
+
     @Transactional
     public void delete(Integer id) {
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public TestEntity getOne(Integer id) {
+        return repository.getOne(id);
     }
 }

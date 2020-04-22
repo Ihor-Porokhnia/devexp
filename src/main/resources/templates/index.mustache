@@ -11,11 +11,11 @@
 {{/entity}}
 
 <form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="_csrf.token">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}">
     <input type="submit" value="Sign Out">
 </form>
 
-<form action="/" method="post" style="width: 700px;">
+<form action="/index" method="post" style="width: 700px;">
     <fieldset>
         <label>
             Enter first name:
@@ -25,6 +25,7 @@
             Enter last name:
             <input name="lastName" required maxlength="100"/>
         </label>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <button type="submit">Send</button>
     </fieldset>
 </form>
@@ -42,6 +43,7 @@
         <fieldset>
             <input type="hidden" name="id" value="{{id}}">
             {{firstName}} {{lastName}}
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
             <button type="submit" style="float: right">Delete</button>
         </fieldset>
     </form>

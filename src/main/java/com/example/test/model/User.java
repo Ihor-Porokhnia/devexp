@@ -7,8 +7,9 @@ import javax.validation.constraints.Email;
 import java.util.Set;
 
 @Data
+@Entity
 @Table(name = "usr")
-public class User {
+public class User extends BasicData {
 
     @Column(name = "login")
     private String login;

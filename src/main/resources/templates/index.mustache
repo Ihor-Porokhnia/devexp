@@ -10,6 +10,11 @@
     <p>Test entity <i>{{firstName}} {{lastName}}</i> successfully added!</p>
 {{/entity}}
 
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="_csrf.token">
+    <input type="submit" value="Sign Out">
+</form>
+
 <form action="/" method="post" style="width: 700px;">
     <fieldset>
         <label>

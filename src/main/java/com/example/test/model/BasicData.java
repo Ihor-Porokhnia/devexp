@@ -1,6 +1,7 @@
 package com.example.test.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -9,7 +10,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Data
-public class BasicData {
+class BasicData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

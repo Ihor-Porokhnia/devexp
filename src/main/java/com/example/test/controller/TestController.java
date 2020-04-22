@@ -8,18 +8,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController("/")
+@RestController
 public class TestController {
 
     @Autowired
     private TestService service;
 
-    @GetMapping
+
+
+    @GetMapping("/index")
     public ModelAndView showPage() {
         return new ModelAndView("index");
     }
 
-    @PostMapping
+    @PostMapping("/index")
     public ModelAndView addEntity(@RequestParam String firstName,
                                   @RequestParam String lastName) {
         ModelAndView mav = new ModelAndView("index");

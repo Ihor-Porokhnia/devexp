@@ -1,6 +1,6 @@
 package com.example.test.model;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

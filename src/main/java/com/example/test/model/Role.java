@@ -16,6 +16,7 @@ public class Role extends BasicData {
     @Column(name = "role_name")
     private String roleName;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private List<User> users;
 

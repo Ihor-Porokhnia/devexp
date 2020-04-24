@@ -33,4 +33,8 @@ public class UserService implements ParentService<User> {
     public User findByLogin(String login) {
         return userRepository.findByUsername(login);
     }
+
+    public User getOne(Integer id) {
+        return userRepository.getOne(id);
+    }
 }

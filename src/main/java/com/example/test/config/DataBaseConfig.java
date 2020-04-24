@@ -39,6 +39,7 @@ public class DataBaseConfig {
         dataSource.setUrl(dataBaseUrl);
         dataSource.setUsername(util.getUsername());
         dataSource.setPassword(util.getPassword());
+        System.out.printf("\n %s | %s \n", dataSource.getUsername(), dataSource.getPassword());
         updateDataSource();
         return dataSource;
     }
@@ -59,7 +60,6 @@ public class DataBaseConfig {
         long period = 1000L * 60L * 60L;
         timer.scheduleAtFixedRate(setLogoPassToDataSource, delay, period);
     }
-
 }
 
 

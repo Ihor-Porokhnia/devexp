@@ -1,7 +1,8 @@
 package com.example.test.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -14,14 +15,17 @@ class BasicData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Integer id;
 
     @CreatedDate
     @Column(name = "created")
+    @JsonFormat(pattern = "dd.MM.yyyy HH.mm.ss")
     private Date createdDate;
 
     @LastModifiedDate
     @Column(name = "updated")
+    @JsonFormat(pattern = "dd.MM.yyyy HH.mm.ss")
     private Date lastModifiedDate;
 
 }

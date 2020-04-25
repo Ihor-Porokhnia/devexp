@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
 @Data
+@EntityListeners(AuditingEntityListener.class)
 class BasicData {
 
     @Id
@@ -25,5 +27,4 @@ class BasicData {
     @Column(name = "updated")
     @JsonFormat(pattern = "dd.MM.yyyy HH.mm.ss")
     private Date lastModifiedDate;
-
 }

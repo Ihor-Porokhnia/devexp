@@ -4,6 +4,7 @@ import com.example.test.model.User;
 import com.example.test.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,9 +21,9 @@ public class UserController {
         return userService.getAll();
     }
 
-    @GetMapping("{id}")
-    public User getOne(@PathVariable("id") User user) {
-        return user;
+    @GetMapping("{username}")
+    public User getOne(@PathVariable("username") String username) {
+        return userService.findByLogin(username);
     }
 
     @PostMapping
@@ -35,13 +36,10 @@ public class UserController {
     }
 
     @PutMapping
-    public Object update(@RequestBody User user) {
+    public Object update(@RequestBody User user) throws NoSuchFieldException, IllegalAccessException {
         User userFromDb = userService.getOne(user.getId());
-        if (userFromDb == null) {
-            return "User with id " + user.getId() + " does not exist";
-        }
         BeanUtils.copyProperties(user, userFromDb, "id");
-        return userService.save(user);
+        return userService.save(userFromDb);
     }
 
     @DeleteMapping

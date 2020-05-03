@@ -1,0 +1,30 @@
+@mixin defaultLoader($size: 54px, $zIndex: -1)
+  position: relative
+  $borderWidth: 4px
+
+  @if $size < 30px
+    $borderWidth: 2px
+
+  &:after
+    content: ''
+    position: absolute
+    top: 50%
+    right: auto
+    bottom: auto
+    left: 50%
+    height: $size
+    width: $size
+    margin-left: -($size / 2)
+    margin-top: -($size / 2)
+    border-radius: 100%
+    border-left: $borderWidth solid #D1D5DC
+    border-right: $borderWidth solid dodgerblue
+    border-bottom: $borderWidth solid #D1D5DC
+    border-top: $borderWidth solid dodgerblue
+    animation: rotation .8s infinite cubic-bezier(.59,.32,.51,.71)
+    z-index: $zIndex
+
+
+@keyframes rotation
+  100%
+    transform: rotate(360deg)

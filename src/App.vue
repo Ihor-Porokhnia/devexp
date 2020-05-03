@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Всем привет!"/>
+    <SignIn/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SignIn from './routerViews/SignIn.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SignIn
   }
 }
 </script>
